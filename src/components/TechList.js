@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
+import TechItem from './TechItem';
+
 class TechList extends Component {
+  // static defaultProps = {
+  //  // Define as default props em componentes de classe.
+  // };
+
+  // static propTypes = {
+  //   // Define as prop types em componentes de classe.
+  // }
+
   state = {
     newTech: '',
     techs: []
@@ -27,12 +37,13 @@ class TechList extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.techs.map(tech => (
-            <li key={tech}>
-              {tech}
-              <button onClick={() => this.handleDelete(tech)} type="button">Remover</button>
-            </li>
-          ))}
+          {this.state.techs.map(tech => 
+            <TechItem
+              key={tech}
+              tech={tech}
+              onDelete={() => this.handleDelete(tech)}
+            /> 
+          )}
         </ul>
         <input 
           type="text"
